@@ -1,0 +1,185 @@
+Lab Details
+This lab walks you through the steps to create an S3 pre-sign URL. Here you will be creating an S3 bucket, uploading objects, and using CloudShell you will create a short-lived URL i.e. pre-sign URL.
+Duration: 45 minutes
+AWS Region: US East (N. Virginia) us-east-1
+
+
+**** Introduction ****
+What is S3?
+S3 stands for Simple Storage Service.
+
+It provides object storage through a web service interface.
+
+Each object is stored as a file with its metadata included and is given an ID number.
+
+Objects uploaded to S3 are stored in containers called “Buckets”, whose names are globally unique. They organize the Amazon S3 namespace at the highest level.
+
+These buckets are region-specific.
+
+You can assign permissions to these buckets to provide or restrict data transactions.
+
+Applications use this ID number to access an object.
+
+Developers can access an object via a REST API.
+
+S3 supports the upload of objects.
+
+It uses the same scalable storage infrastructure that Amazon.com uses to run its global e-commerce network.
+
+It's designed for storing online backup and archiving of data and applications on AWS.
+
+Storage classes provided are:
+
+Standard
+
+Standard_IA i.e., Standard Infrequent Access
+
+Intelligent_Tiering
+
+OneZone_IA
+
+Glacier
+
+Deep_Archive
+
+RRS i.e., Reduced Redundancy Storage (Not recommended by AWS)
+
+Data access is provided through the S3 Console.
+
+Data stored can be either Public or Private based on user requirements.
+
+Data stored can be encrypted.
+
+We can define life-cycle policies which can help in the automation of data transfer, retention, and deletion.
+
+Amazon Athena can be used to "query" S3 data.
+
+What is AWS Cloud Shell?
+AWS CloudShell is a browser-based shell that makes it easy to manage, explore, and interact securely with your AWS resources. With CloudShell, you can quickly run scripts with the AWS Command Line Interface (AWS CLI), experiment with AWS service APIs using the AWS SDKs, or use a range of other tools
+
+Advantages :
+CloudShell inherits the credentials of the user signed in to the AWS Management Console.
+
+A fully managed Amazon Linux 2 environment that has the latest versions of popular tools already installed and updated.
+
+With 1 GB of persistent storage per Region, you can store scripts, files, configuration preferences, etc in your home directory.
+
+
+
+*** Architecture Diagram ***
+
+
+
+*** Task Details ***
+
+1. Sign in to AWS Management Console.
+
+2. Create an S3 bucket.
+
+3. Upload a file to an S3 Bucket.
+
+4. Change an Environment in CloudShell
+
+5. Run the S3 pre-sign command and test the output
+
+6. Validation of the lab?
+
+
+*** Lab Steps ***
+Task 1: Sign in to AWS Management Console
+
+Click on the  button, and you will get redirected to AWS Console in a new browser tab.
+
+On the AWS sign-in page,
+
+Leave the Account ID as default. Never edit/remove the 12 digit Account ID present in the AWS Console. otherwise, you cannot proceed with the lab.
+
+Now copy your User Name and Password in the Lab Console to the IAM Username and Password in AWS Console and click on the Sign in button.
+
+Once Signed In to the AWS Management Console, Make the default AWS Region as US East (N. Virginia) us-east-1.
+
+Task 2: Create S3 Bucket
+
+Make sure you are in the US East (N. Virginia) us-east-1 Region.
+Navigate to the Services menu at the top. Click on S3 in the Storage section.
+
+On the S3 Page, click on the Create bucket and fill in the bucket details.
+
+Bucket name :Enter mywhizbucket
+
+
+Note: S3 bucket name is globally unique, choose a name that is available.
+
+Region: Select US East (N. Virginia)
+
+Object ownership: Select ACLs disabled (recommended) option
+
+Leave other settings as default.
+
+Click on the Create bucket button.
+
+
+
+The S3 bucket is created.
+
+Task 3: Upload a file to an S3 bucket
+Click on your bucket name.
+
+In the Overview, You can see the following message
+
+You don't have any objects in this bucket.
+
+
+
+You can upload any image from your local machine or you can download our test image from Download Me.
+
+To upload a file to our S3 bucket,
+
+Click on the Upload button.
+
+Click on Add files
+
+Browse for your local image or the image we provided and select it.
+
+Click on the Upload button.
+
+You can watch the progress of the upload from within the transfer panel at the top of the screen.
+
+Once your file has been uploaded, it will be displayed in the bucket.
+
+
+
+Now click on the smiley_49_39.jpg to copy the S3 URI.
+
+Click on the copy icon for S3 URI.
+
+Note: Keep the copied S3 URI in a notepad, you will need this in future steps.
+
+Task 4: Create an Environment in CloudShell
+Click on  icon (Cloud Shell) on the top right AWS menu bar.
+
+A new tab in your browser opens and if you see a welcome message to cloud shell then click on the Close button in that message.
+
+You will see a creating environment message on the screen.
+
+         
+
+Wait for a few minutes to complete the environment creation. Once the environment is created , You are ready to use the terminal.
+
+         
+
+Task 5: Run the S3 pre-sign command and test the output
+Run the below command to make the s3 pre-sign URL.
+
+Syntax: aws s3 presign [S3 URI] --expires-in 60
+
+Example: aws s3 presign s3://mywhizdemobucket/smiley_49_39.jpeg --expires-in 60
+
+
+Hit end to see the output, copy the complete URL.
+
+
+And,  paste in the New tab of your browser.
+
+
+Refresh the page after 1 minute, the page is gone, because its only valid for 60 seconds, i.e. 1 minute.
