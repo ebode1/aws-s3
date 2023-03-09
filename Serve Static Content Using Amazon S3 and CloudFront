@@ -1,0 +1,25 @@
+Link: 
+
+1.CHALLENGE
+Download Files from an S3 Bucket
+You will download the design team's website files.
+
+2.CHALLENGE
+Create an Amazon S3 Bucket
+You'll create an S3 bucket within AWS.
+
+3.CHALLENGE
+Upload Files to an S3 Bucket
+You'll upload the website files to your newly created S3 bucket.
+
+4.CHALLENGE
+Configure an S3 Bucket's Permissions
+You'll configure your S3 bucket to allow public access.
+
+5.CHALLENGE
+Enable Static Website Hosting
+You'll enable static website hosting on your S3 bucket.
+
+6.CHALLENGE
+Create a CloudFront Distribution
+You'll create an Amazon CloudFront distribution to distribute a static website.
